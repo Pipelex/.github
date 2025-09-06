@@ -1,4 +1,3 @@
-
 # Pipelex — agent-first AI workflow language
 
 **Pipelex is an agent-first tool for building repeatable AI workflows. Using Pipelex, agents can transform natural language requirements into production-ready AI workflows in minutes.**
@@ -21,6 +20,9 @@ The Pipelex language (PLX) is an **open standard**.
 
 * **`pipelex-starter` — New project template**
   A template repo to bootstrap your Pipelex project with batteries included: `Makefile`, env setup, tests, and a minimal pipeline.
+
+* **`cocode` — AI-powered code analysis & docs CLI**
+  Command-line tool to analyze local or GitHub repositories, convert codebases into AI-friendly text formats, extract interfaces/imports, and automate docs & release chores—implemented as Pipelex pipelines.
 
 ---
 
@@ -71,13 +73,26 @@ pip install pipelex          # or: poetry add pipelex | uv pip install pipelex
 pip install "pipelex[anthropic,google,mistralai,bedrock,fal]"
 ```
 
-Requirements:
+**Requirements:**
 
 * Python ≥ **3.10** for the core library.
 * Add provider API keys to your environment (`.env` or CI secrets).
 * Use **[`vscode-pipelex`](https://open-vsx.org/extension/Pipelex/pipelex)** to edit `.plx` files.
 
 See the **[Docs](https://docs.pipelex.com/)** for the PLX language spec, LLM integrations, and composition patterns.
+
+---
+
+### 4) I want to **analyze & document a codebase** (cocode)
+
+```bash
+# Install the CLI
+pip install cocode
+# Explore commands
+cocode --help
+```
+
+Use **cocode** to analyze local or GitHub repositories and generate AI-friendly summaries, interfaces, and docs.
 
 ---
 
