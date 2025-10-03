@@ -19,10 +19,12 @@ The Pipelex language (PLX) is an **open standard**.
   Runnable pipelines you can clone and tweak: quick starts, demos, and best-practice patterns.
 
 * **[`pipelex-starter`](https://github.com/Pipelex/pipelex-starter) — New project template**
-  A template repo to bootstrap your Pipelex project with batteries included: `Makefile`, env setup, tests, and a minimal pipeline.
+  A template repo to bootstrap your Pipelex project with batteries included: `Makefile`, env setup, tests, a minimal pipeline, and pre-configured inference backend routing.
 
 * **[`cocode`](https://github.com/Pipelex/cocode) — AI-powered code analysis & docs CLI**
   Command-line tool to analyze local or GitHub repositories, convert codebases into AI-friendly text formats, extract interfaces/imports, and automate docs & release chores—implemented as Pipelex pipelines.
+
+> **API Access:** All repos support **Pipelex Inference** (Optional and Free) for unified API access across providers (OpenAI, Anthropic, Google, Mistral, FAL, and more), or bring your own provider API keys.
 
 ---
 
