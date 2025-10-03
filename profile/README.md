@@ -10,18 +10,18 @@ The Pipelex language (PLX) is an **open standard**.
 
 ---
 
-## What’s in this org?
+## What's in this org?
 
-* **`pipelex` — Core library & PLX language**
-  Define, run, and compose pipelines (sequences/branches of “pipes”) across one or more LLMs with structured I/O, validation, and clear contracts. PLX—the Pipelex language—is an **open standard** for declaratively specifying AI workflows.
+* **[`pipelex`](https://github.com/Pipelex/pipelex) — Core library & PLX language**
+  Define, run, and compose pipelines (sequences/branches of "pipes") across one or more LLMs with structured I/O, validation, and clear contracts. PLX—the Pipelex language—is an **open standard** for declaratively specifying AI workflows.
 
-* **`pipelex-cookbook` — Examples & recipes**
+* **[`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) — Examples & recipes**
   Runnable pipelines you can clone and tweak: quick starts, demos, and best-practice patterns.
 
-* **`pipelex-starter` — New project template**
+* **[`pipelex-starter`](https://github.com/Pipelex/pipelex-starter) — New project template**
   A template repo to bootstrap your Pipelex project with batteries included: `Makefile`, env setup, tests, and a minimal pipeline.
 
-* **`cocode` — AI-powered code analysis & docs CLI**
+* **[`cocode`](https://github.com/Pipelex/cocode) — AI-powered code analysis & docs CLI**
   Command-line tool to analyze local or GitHub repositories, convert codebases into AI-friendly text formats, extract interfaces/imports, and automate docs & release chores—implemented as Pipelex pipelines.
 
 ---
