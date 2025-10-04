@@ -24,7 +24,7 @@ The Pipelex language (PLX) is an **open standard**.
 * **[`cocode`](https://github.com/Pipelex/cocode) — AI-powered code analysis & docs CLI**
   Command-line tool to analyze local or GitHub repositories, convert codebases into AI-friendly text formats, extract interfaces/imports, and automate docs & release chores—implemented as Pipelex pipelines.
 
-> **API Access:** All repos support **Pipelex Inference** (Optional and Free) for unified API access across providers (OpenAI, Anthropic, Google, Mistral, FAL, and more), or bring your own provider API keys.
+> **API Access:** All repos support **[Pipelex Inference](https://docs.pipelex.com/pages/configuration/config-technical/inference-backend-config/)** (Optional and Free) for unified API access across providers (OpenAI, Anthropic, Google, Mistral, FAL, and more), or bring your own provider API keys.
 
 ---
 
