@@ -56,12 +56,15 @@ result = run_pipeline("my_workflow.plx", {"input": "data"})
 ```bash
 # Using Docker
 docker pull pipelex/pipelex-api:latest
-docker run -p 8000:8000 -e OPENAI_API_KEY=$OPENAI_API_KEY pipelex/pipelex-api
+docker run -p 8081:8081 \
+  -e API_KEY=your-api-key-here \
+  -e PIPELEX_INFERENCE_API_KEY=your-pipelex-key \
+  pipelex/pipelex-api:latest
 
 # Or clone and run locally
 git clone https://github.com/Pipelex/pipelex-api
 cd pipelex-api
-make install && make run
+docker-compose up
 ```
 
 ### 🤖 **AI Agents** — MCP server
