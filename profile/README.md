@@ -1,121 +1,148 @@
-# Pipelex — agent-first AI workflow language
+# Pipelex — Declarative language for repeatable AI workflows
 
-**Pipelex is an agent-first tool for building repeatable AI workflows. Using Pipelex, agents can transform natural language requirements into production-ready AI workflows in minutes.**
-The Pipelex language (PLX) is an **open standard**.
+**Think Dockerfile or SQL for multi-step LLM pipelines:** you declare what to do, not how. The runtime handles execution across any model or provider. **The Pipelex language (.plx) is an open standard (MIT license)** designed to be both human-readable and LLM-friendly.
 
 **Quick links:**
-**[Website](https://www.pipelex.com/)** • **[Docs](https://docs.pipelex.com/)** • [Cookbook (examples)](https://github.com/Pipelex/pipelex-cookbook) • [Starter template](https://github.com/Pipelex/pipelex-starter) • **[VS Code extension: `vscode-pipelex`](https://open-vsx.org/extension/Pipelex/pipelex)**
-
-> 💡 **Recommended editor:** Install **`vscode-pipelex`** to edit `.plx` pipeline files. It works with **VS Code, Cursor, Windsurf, BlackboxAI**, and most VS Code forks.
+**[Website](https://www.pipelex.com/)** • **[Docs](https://docs.pipelex.com/)** • **[Discord](https://go.pipelex.com/discord)** • [Cookbook](https://github.com/Pipelex/pipelex-cookbook) • [Demo (2min)](https://go.pipelex.com/demo) • **[VS Code Extension](https://open-vsx.org/extension/Pipelex/pipelex)**
 
 ---
 
-## What's in this org?
+## What's in this organization?
 
-* **[`pipelex`](https://github.com/Pipelex/pipelex) — Core library & PLX language**
-  Define, run, and compose pipelines (sequences/branches of "pipes") across one or more LLMs with structured I/O, validation, and clear contracts. PLX—the Pipelex language—is an **open standard** for declaratively specifying AI workflows.
+### Core Components
+
+* **[`pipelex`](https://github.com/Pipelex/pipelex) — Runtime & PLX language** 
+  The Python library and language specification. Build, run, and compose AI workflows with structured I/O and validation.
+
+* **[`pipelex-api`](https://github.com/Pipelex/pipelex-api) — FastAPI server & Docker** 🚀
+  Deploy Pipelex as a REST API. Self-host with Docker or integrate into your infrastructure.
+
+* **[`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) — Model Context Protocol server** 🤖
+  Let Claude, Cursor, and other MCP-compatible agents run and build Pipelex workflows.
+
+* **[`n8n-nodes-pipelex`](https://github.com/Pipelex/n8n-nodes-pipelex) — n8n automation node** ⚡
+  Integrate Pipelex workflows into n8n for no-code automation and orchestration.
+
+### Resources & Tools
 
 * **[`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) — Examples & recipes**
-  Runnable pipelines you can clone and tweak: quick starts, demos, and best-practice patterns.
+  Ready-to-run pipelines: classification, extraction, analysis, generation, and more.
 
-* **[`pipelex-starter`](https://github.com/Pipelex/pipelex-starter) — New project template**
-  A template repo to bootstrap your Pipelex project with batteries included: `Makefile`, env setup, tests, a minimal pipeline, and pre-configured inference backend routing.
+* **[`pipelex-starter`](https://github.com/Pipelex/pipelex-starter) — Project template**
+  Bootstrap new projects with batteries included: Makefile, tests, environment setup.
 
-* **[`cocode`](https://github.com/Pipelex/cocode) — AI-powered code analysis & docs CLI**
-  Command-line tool to analyze local or GitHub repositories, convert codebases into AI-friendly text formats, extract interfaces/imports, and automate docs & release chores—implemented as Pipelex pipelines.
-
-> **API Access:** All repos support **[Pipelex Inference](https://docs.pipelex.com/pages/configuration/config-technical/inference-backend-config/)** (Optional and Free) for unified API access across providers (OpenAI, Anthropic, Google, Mistral, FAL, and more), or bring your own provider API keys.
+> **LLM Access:** Use **[Pipelex Inference](https://docs.pipelex.com/pages/configuration/config-technical/inference-backend-config/)** (free tier available) for unified access to OpenAI, Anthropic, Google, Mistral, and more—or bring your own API keys.
 
 ---
 
-## Choose your path
+## Choose your deployment
 
-### 1) I want to **discover & run example pipelines** (Cookbook)
+### 🐍 **Local Development** — Python library
 
 ```bash
-# Clone and install
-git clone https://github.com/Pipelex/pipelex-cookbook.git
+pip install pipelex
+# Optional: provider-specific extras
+pip install "pipelex[anthropic,google,mistralai]"
+```
+
+```python
+from pipelex import run_pipeline
+
+result = run_pipeline("my_workflow.plx", {"input": "data"})
+```
+
+### 🐳 **API Server** — Docker or self-hosted
+
+```bash
+# Using Docker
+docker pull pipelex/pipelex-api:latest
+docker run -p 8000:8000 -e OPENAI_API_KEY=$OPENAI_API_KEY pipelex/pipelex-api
+
+# Or clone and run locally
+git clone https://github.com/Pipelex/pipelex-api
+cd pipelex-api
+make install && make run
+```
+
+### 🤖 **AI Agents** — MCP server
+
+```bash
+# Install the MCP server
+pip install pipelex-mcp
+
+# Configure in Claude Desktop or Cursor
+# Agents can now run AND build Pipelex workflows
+```
+
+### ⚡ **Automation** — n8n node
+
+Install the Pipelex node in n8n to integrate AI workflows into your automation pipelines. Connect with 400+ apps and services.
+
+---
+
+## Quick starts
+
+### 1) **Try examples** (Cookbook)
+
+```bash
+git clone https://github.com/Pipelex/pipelex-cookbook
 cd pipelex-cookbook
-make install   # creates a virtual environment and uses uv to install pipelex and deps
+make install
+cp .env.example .env  # Add your API keys
 
-# Configure secrets
-cp .env.example .env
-# Add e.g. OPENAI_API_KEY=... (others optional depending on examples)
-
-# Run the Hello World
-python quick_start/hello_world.py
+# Run an example
+python examples/classification/sentiment.py
 ```
 
-> 🔧 Tip: Install **[`vscode-pipelex`](https://open-vsx.org/extension/Pipelex/pipelex)** for syntax highlighting and a great editing experience in `.plx` files (VS Code, Cursor, Windsurf, BlackboxAI, and most forks).
-
----
-
-### 2) I want to **start a new project** (Starter)
-
-1. Open [`pipelex-starter`](https://github.com/Pipelex/pipelex-starter) and click **Use this template**.
-2. After GitHub creates your repo:
-
-   ```bash
-   git clone <your-new-repo-url>
-   cd <your-new-repo>
-   make install
-   cp .env.example .env  # add your keys (OPENAI_API_KEY is enough to start)
-   ```
-3. Install **[`vscode-pipelex`](https://open-vsx.org/extension/Pipelex/pipelex)** and start building `.plx` pipelines under `pipelines/` (or your preferred structure).
-
----
-
-### 3) I want to **use Pipelex in my own code** (Core library)
+### 2) **Start a new project** (Template)
 
 ```bash
-# Install the library
-pip install pipelex          # or: poetry add pipelex | uv pip install pipelex
+# Use GitHub template
+# Visit: https://github.com/Pipelex/pipelex-starter
+# Click "Use this template" → Create your repo
 
-# Optional extras for providers/models
-pip install "pipelex[anthropic,google,mistralai,bedrock,fal]"
+git clone <your-new-repo>
+cd <your-new-repo>
+make install
 ```
 
-**Requirements:**
-
-* Python ≥ **3.10** for the core library.
-* Add provider API keys to your environment (`.env` or CI secrets).
-* Use **[`vscode-pipelex`](https://open-vsx.org/extension/Pipelex/pipelex)** to edit `.plx` files.
-
-See the **[Docs](https://docs.pipelex.com/)** for the PLX language spec, LLM integrations, and composition patterns.
-
----
-
-### 4) I want to **analyze & document a codebase** (cocode)
+### 3) **Let AI build your workflow** 🪄
 
 ```bash
-# Install the CLI
-pip install cocode
-# Explore commands
-cocode --help
+# Install Pipelex with CLI
+pip install pipelex
+
+# Describe what you want, get a working pipeline
+pipelex build pipe "Extract product features from reviews and rate importance 1-10"
+
+# Run the generated pipeline
+pipelex run product_features.plx --input "review.txt"
 ```
 
-Use **cocode** to analyze local or GitHub repositories and generate AI-friendly summaries, interfaces, and docs.
-
----
+> 💡 **Pro tip:** Install **[`vscode-pipelex`](https://open-vsx.org/extension/Pipelex/pipelex)** for syntax highlighting in VS Code, Cursor, Windsurf, and BlackboxAI.
 
 ## Contributing
 
-We ❤️ contributions across the ecosystem:
-
-* **Core library:** see `CONTRIBUTING.md` in `pipelex` (dev setup, tests, PR process).
-* **Examples/recipes:** add new pipelines under `pipelex-cookbook` (start with `examples/wip/<your-folder>` and include a short README in your PLX).
-
----
+We welcome contributions! Here's how to get involved:
 
 ## Community & support
 
-* 📚 **Docs:** **[https://docs.pipelex.com/](https://docs.pipelex.com/)**
-* 🐛 **Issues:** use the repo issue trackers (`pipelex`, `pipelex-cookbook`, `pipelex-starter`)
-* ✉️ **Security/Privacy:** [security@pipelex.com](mailto:security@pipelex.com)
+- 💬 **[Discord](https://go.pipelex.com/discord)** — Get help, share workflows, meet the team
+- 📚 **[Documentation](https://docs.pipelex.com/)** — Complete guides and API reference
+- 🐛 **[GitHub Issues](https://github.com/Pipelex/pipelex/issues)** — Report bugs and request features
+- ✉️ **[security@pipelex.com](mailto:security@pipelex.com)** — Security and privacy concerns
 
 ---
 
-## License & trademark
+## License
 
-* Repos are generally **MIT** (see each repo’s `LICENSE`).
-* “Pipelex” is a trademark of **Evotis S.A.S.**
+All repositories are **MIT licensed** unless otherwise specified. See individual `LICENSE` files for details.
+
+**"Pipelex" is a trademark of Evotis S.A.S.**
+
+---
+
+<p align="center">
+  <strong>Built by developers who were tired of rewriting the same AI patterns.</strong><br>
+  Now you don't have to.
+</p>
