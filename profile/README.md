@@ -9,10 +9,11 @@
 
 ## Get started
 
-Install the skills in Claude Code:
+Install the plugin in Claude Code:
 
-```bash
-npx skills add https://github.com/mthds-ai/skills
+```
+/plugin marketplace add mthds-ai/skills
+/plugin install mthds@mthds-ai-skills
 ```
 
 Then ask Claude: **"Please setup mthds"**
