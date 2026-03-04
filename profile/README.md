@@ -1,43 +1,41 @@
-# Pipelex — Declarative language for repeatable AI workflows
+# Pipelex — AI Methods for Claude Code
 
-**Think Dockerfile or SQL for multi-step LLM pipelines:** you declare what to do, not how. The runtime handles execution across any model or provider. **The Pipelex language (.plx) is an open standard (MIT license)** designed to be both human-readable and LLM-friendly.
+**Repeatable, version-controlled AI workflows as a Claude Code plugin.** Declare multi-step LLM pipelines, run them from your terminal, and get consistent results every time.
 
 **Quick links:**
-**[Website](https://www.pipelex.com/)** • **[Docs](https://docs.pipelex.com/)** • **[Discord](https://go.pipelex.com/discord)** • [Cookbook](https://github.com/Pipelex/pipelex-cookbook) • [Demo (2min)](https://go.pipelex.com/demo) • **[VS Code Extension](https://open-vsx.org/extension/Pipelex/pipelex)**
+**[Website](https://www.pipelex.com/)** • **[Docs](https://docs.pipelex.com/)** • **[Discord](https://go.pipelex.com/discord)** • [Cookbook](https://github.com/Pipelex/pipelex-cookbook) • [Demo (2min)](https://go.pipelex.com/demo)
 
 ---
 
-## What's in this organization?
+## Get started
 
-### Core Components
+Install the skills in Claude Code:
 
-* **[`pipelex`](https://github.com/Pipelex/pipelex) — Runtime & PLX language** 
-  The Python library and language specification. Build, run, and compose AI workflows with structured I/O and validation.
+```bash
+npx skills add https://github.com/mthds-ai/skills
+```
 
-* **[`pipelex-api`](https://github.com/Pipelex/pipelex-api) — FastAPI server & Docker** 🚀
-  Deploy Pipelex as a REST API. Self-host with Docker or integrate into your infrastructure.
+Then ask Claude: **"Please setup mthds"**
 
-* **[`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) — Model Context Protocol server** 🤖
-  Let Claude, Cursor, and other MCP-compatible agents run and build Pipelex workflows.
+## Build your first workflow
 
-* **[`n8n-nodes-pipelex`](https://github.com/Pipelex/n8n-nodes-pipelex) — n8n automation node** ⚡
-  Integrate Pipelex workflows into n8n for no-code automation and orchestration.
+Ask Claude to build a workflow for you:
 
-### Resources & Tools
+```
+Build me a method that extracts key insights from customer reviews and rates them by importance
+```
 
-* **[`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) — Examples & recipes**
-  Ready-to-run pipelines: classification, extraction, analysis, generation, and more.
+Or use the CLI shortcut:
 
-* **[`pipelex-starter`](https://github.com/Pipelex/pipelex-starter) — Project template**
-  Bootstrap new projects with batteries included: Makefile, tests, environment setup.
-
-> **LLM Access:** Use **[Pipelex Inference](https://docs.pipelex.com/pages/configuration/config-technical/inference-backend-config/)** (free tier available) for unified access to OpenAI, Anthropic, Google, Mistral, and more—or bring your own API keys.
+```
+/mthds-build
+```
 
 ---
 
-## Choose your deployment
+## Manual installation
 
-### 🐍 **Local Development** — Python library
+### Python library
 
 ```bash
 pip install pipelex
@@ -45,88 +43,37 @@ pip install pipelex
 pip install "pipelex[anthropic,google,mistralai]"
 ```
 
-```python
-from pipelex import run_pipeline
-
-result = run_pipeline("my_workflow.plx", {"input": "data"})
-```
-
-### 🐳 **API Server** — Docker or self-hosted
+### API Server (Docker)
 
 ```bash
-# Using Docker
 docker pull pipelex/pipelex-api:latest
 docker run -p 8081:8081 \
   -e API_KEY=your-api-key-here \
   -e PIPELEX_INFERENCE_API_KEY=your-pipelex-key \
   pipelex/pipelex-api:latest
-
-# Or clone and run locally
-git clone https://github.com/Pipelex/pipelex-api
-cd pipelex-api
-docker-compose up
 ```
 
-### 🤖 **AI Agents** — MCP server
+See [`pipelex-api`](https://github.com/Pipelex/pipelex-api) for full setup instructions.
+
+### MCP server
 
 ```bash
-# Install the MCP server
 pip install pipelex-mcp
-
-# Configure in Claude Desktop or Cursor
-# Agents can now run AND build Pipelex workflows
 ```
 
-### ⚡ **Automation** — n8n node
+Configure in Claude Desktop or Cursor. See [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp).
 
-Install the Pipelex node in n8n to integrate AI workflows into your automation pipelines. Connect with 400+ apps and services.
+### n8n node
+
+Install the Pipelex node in n8n to integrate AI workflows into your automation pipelines. See [`n8n-nodes-pipelex`](https://github.com/Pipelex/n8n-nodes-pipelex).
+
+> **LLM Access:** Use **[Pipelex Inference](https://docs.pipelex.com/pages/configuration/config-technical/inference-backend-config/)** (free tier available) for unified access to OpenAI, Anthropic, Google, Mistral, and more — or bring your own API keys.
 
 ---
 
-## Quick starts
+## Examples
 
-### 1) **Try examples** (Cookbook)
-
-```bash
-git clone https://github.com/Pipelex/pipelex-cookbook
-cd pipelex-cookbook
-make install
-cp .env.example .env  # Add your API keys
-
-# Run an example
-python examples/classification/sentiment.py
-```
-
-### 2) **Start a new project** (Template)
-
-```bash
-# Use GitHub template
-# Visit: https://github.com/Pipelex/pipelex-starter
-# Click "Use this template" → Create your repo
-
-git clone <your-new-repo>
-cd <your-new-repo>
-make install
-```
-
-### 3) **Let AI build your workflow** 🪄
-
-```bash
-# Install Pipelex with CLI
-pip install pipelex
-
-# Describe what you want, get a working pipeline
-pipelex build pipe "Extract product features from reviews and rate importance 1-10"
-
-# Run the generated pipeline
-pipelex run product_features.plx --input "review.txt"
-```
-
-> 💡 **Pro tip:** Install **[`vscode-pipelex`](https://open-vsx.org/extension/Pipelex/pipelex)** for syntax highlighting in VS Code, Cursor, Windsurf, and BlackboxAI.
-
-## Contributing
-
-We welcome contributions! Here's how to get involved:
+Ready-to-run pipelines are available in the **[Cookbook](https://github.com/Pipelex/pipelex-cookbook)**: classification, extraction, analysis, generation, and more.
 
 ## Community & support
 
