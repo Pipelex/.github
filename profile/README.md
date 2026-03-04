@@ -18,9 +18,9 @@ Install the plugin in Claude Code:
 
 Then ask Claude: **"Please setup mthds"**
 
-## Build your first workflow
+## Build your first method
 
-Ask Claude to build a workflow for you:
+Ask Claude to build a method for you:
 
 ```
 Build me a method that extracts key insights from customer reviews and rates them by importance
