@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://www.pipelex.com/"><img src="https://raw.githubusercontent.com/Pipelex/pipelex/main/.github/assets/logo.png" alt="Pipelex Logo" width="400" style="max-width: 100%; height: auto;"></a>
+  <a href="https://www.pipelex.com/"><img src="https://raw.githubusercontent.com/Pipelex/pipelex/main/.github/assets/logo.png" alt="Pipelex Logo" width="400"></a>
 
   <br/>
   <br/>
@@ -37,7 +37,7 @@ From here, Pipelex handles model routing across 60+ models, structured output pa
 
 ## Get Started with Claude Code
 
-Install the `mthds` npm package:
+Install the `mthds` CLI, it's required by the plugin for method validation and execution:
 
 ```bash
 npm install -g mthds
