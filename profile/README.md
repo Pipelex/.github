@@ -1,87 +1,134 @@
-# Pipelex — AI Methods for Claude Code
+<div align="center">
+  <a href="https://www.pipelex.com/"><img src="https://raw.githubusercontent.com/Pipelex/pipelex/main/.github/assets/logo.png" alt="Pipelex Logo" width="400"></a>
 
-**Repeatable, version-controlled AI workflows as a Claude Code plugin.** Declare multi-step LLM pipelines, run them from your terminal, and get consistent results every time.
+  <br/>
+  <br/>
+  <h2 align="center">Executable AI Methods</h2>
+  <p align="center">Declare multi-step AI methods in typed <code>.mthds</code> files — deterministic orchestration, structured outputs, repeatable results.</p>
 
-**Quick links:**
-**[Website](https://www.pipelex.com/)** • **[Docs](https://docs.pipelex.com/)** • **[Discord](https://go.pipelex.com/discord)** • [Cookbook](https://github.com/Pipelex/pipelex-cookbook) • [Demo (2min)](https://go.pipelex.com/demo)
+  <div>
+    <a href="https://go.pipelex.com/demo"><strong>Demo (2min)</strong></a> -
+    <a href="https://docs.pipelex.com/"><strong>Docs</strong></a> -
+    <a href="https://mthds.sh"><strong>Hub</strong></a> -
+    <a href="https://go.pipelex.com/discord"><strong>Discord</strong></a>
+  </div>
+  <br/>
+
+  <a href="https://github.com/Pipelex/pipelex/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License"></a>
+  <a href="https://pypi.org/project/pipelex/"><img src="https://img.shields.io/pypi/v/pipelex?logo=pypi&logoColor=white&color=blue&style=flat-square" alt="PyPI"></a>
+  <a href="https://go.pipelex.com/discord"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
+</div>
+
+<br/>
+
+## What a Method Looks Like
+
+```toml
+[pipe.summarize_article]
+type    = "PipeLLM"
+inputs  = { article = "Text", audience = "Text" }
+output  = "Text"
+prompt  = "Summarize $article in three bullet points for $audience."
+```
+
+From here, Pipelex handles model routing across 60+ models, structured output parsing, and pipeline orchestration.
 
 ---
 
-## Get started
+## Get Started with Claude Code
 
-Install the plugin in Claude Code:
+Install the `mthds` CLI, it's required by the plugin for method validation and execution:
 
-```
-/plugin marketplace add mthds-ai/skills
-/plugin install mthds@mthds-ai-skills
-```
-
-Then ask Claude: **"Please setup mthds"**
-
-## Build your first method
-
-Ask Claude to build a method for you:
-
-```
-Build me a method that extracts key insights from customer reviews and rates them by importance
+```bash
+npm install -g mthds
 ```
 
-Or use the CLI shortcut:
+Start Claude Code:
+
+```bash
+claude
+```
+
+Tell Claude to install the MTHDS plugins marketplace:
 
 ```
-/mthds-build
+/plugin marketplace add mthds-ai/mthds-plugins
+```
+
+Then install the MTHDS Claude Code plugin:
+
+```
+/plugin install mthds@mthds-plugins
+```
+
+Then reload plugins:
+
+```
+/reload-plugins
+```
+
+If that doesn't work, exit Claude Code and reopen it:
+
+```
+/exit
+```
+
+Build your first method:
+
+```
+/mthds-build A method to summarize articles with key takeaways for different audiences
+```
+
+Run it:
+
+```
+/mthds-run
 ```
 
 ---
 
-## Manual installation
-
-### Python library
+## Get Started without Claude Code
 
 ```bash
-pip install pipelex
-# Optional: provider-specific extras
-pip install "pipelex[anthropic,google,mistralai]"
+uv tool install pipelex
+pipelex init
 ```
 
-### API Server (Docker)
+1. Install the [VS Code extension](https://go.pipelex.com/vscode) for `.mthds` syntax highlighting
+2. Browse methods on the [MTHDS Hub](https://mthds.sh) for inspiration
+3. Author your own `.mthds` methods
+4. Validate with `pipelex validate bundle your_method.mthds`
+5. Run with `pipelex run bundle your_method.mthds`
 
-```bash
-docker pull pipelex/pipelex-api:latest
-docker run -p 8081:8081 \
-  -e API_KEY=your-api-key-here \
-  -e PIPELEX_INFERENCE_API_KEY=your-pipelex-key \
-  pipelex/pipelex-api:latest
-```
+---
 
-See [`pipelex-api`](https://github.com/Pipelex/pipelex-api) for full setup instructions.
+## Configure AI Access
 
-### MCP server
-
-```bash
-pip install pipelex-mcp
-```
-
-Configure in Claude Desktop or Cursor. See [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp).
-
-### n8n node
-
-Install the Pipelex node in n8n to integrate AI workflows into your automation pipelines. See [`n8n-nodes-pipelex`](https://github.com/Pipelex/n8n-nodes-pipelex).
-
-> **LLM Access:** Use **[Pipelex Inference](https://docs.pipelex.com/pages/configuration/config-technical/inference-backend-config/)** (free tier available) for unified access to OpenAI, Anthropic, Google, Mistral, and more — or bring your own API keys.
+- **[Pipelex Gateway](https://app.pipelex.com/) (Recommended)** — Free credits, single API key for LLMs, OCR / document extraction, and image generation across all major providers.
+- **Bring Your Own Keys** — Use existing API keys from OpenAI, Anthropic, Google, Mistral, etc. See [Configure AI Providers](https://docs.pipelex.com/latest/setup/configure-ai-providers/).
+- **Local AI** — Ollama, vLLM, LM Studio, or llama.cpp — no API keys required. See [Configure AI Providers](https://docs.pipelex.com/latest/setup/configure-ai-providers/).
 
 ---
 
 ## Examples
 
-Ready-to-run pipelines are available in the **[Cookbook](https://github.com/Pipelex/pipelex-cookbook)**: classification, extraction, analysis, generation, and more.
+Ready-to-run methods in the **[Cookbook](https://github.com/Pipelex/pipelex-cookbook)**: classification, extraction, analysis, generation, and more.
 
-## Community & support
+## Community & Support
 
-- 💬 **[Discord](https://go.pipelex.com/discord)** — Get help, share workflows, meet the team
-- 📚 **[Documentation](https://docs.pipelex.com/)** — Complete guides and API reference
-- 🐛 **[GitHub Issues](https://github.com/Pipelex/pipelex/issues)** — Report bugs and request features
-- ✉️ **[security@pipelex.com](mailto:security@pipelex.com)** — Security and privacy concerns
+- **[Discord](https://go.pipelex.com/discord)** — Get help, share methods, meet the team
+- **[Documentation](https://docs.pipelex.com/)** — Guides and reference
+- **[GitHub Issues](https://github.com/Pipelex/pipelex/issues)** — Report bugs and request features
+- **[security@pipelex.com](mailto:security@pipelex.com)** — Security and privacy concerns
+
+## Key Repositories
+
+| Repository | Description |
+|:-----------|:------------|
+| [`pipelex`](https://github.com/Pipelex/pipelex) | Python runtime — build and run AI methods |
+| [`mthds`](https://github.com/mthds-ai/mthds) | The MTHDS open standard — specification and docs |
+| [`mthds-plugins`](https://github.com/mthds-ai/mthds-plugins) | Claude Code plugin — skills for building, running, and editing methods |
+| [`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) | Production-ready examples and tutorials |
 
 ---
 
@@ -90,10 +137,3 @@ Ready-to-run pipelines are available in the **[Cookbook](https://github.com/Pipe
 All repositories are **MIT licensed** unless otherwise specified. See individual `LICENSE` files for details.
 
 **"Pipelex" is a trademark of Evotis S.A.S.**
-
----
-
-<p align="center">
-  <strong>Built by developers who were tired of rewriting the same AI patterns.</strong><br>
-  Now you don't have to.
-</p>
