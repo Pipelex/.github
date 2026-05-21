@@ -37,43 +37,13 @@ From here, Pipelex handles model routing across 60+ models, structured output pa
 
 ## Get Started with Claude Code
 
-Install the `mthds` CLI, it's required by the plugin for method validation and execution:
-
-```bash
-npm install -g mthds
-```
-
-Start Claude Code:
-
-```bash
-claude
-```
-
-Tell Claude to install the MTHDS plugins marketplace:
+Open Claude Code and paste this. Claude does the rest.
 
 ```
-/plugin marketplace add mthds-ai/mthds-plugins
+Install mthds: run bash -c 'npm install -g mthds && mthds-agent bootstrap && claude plugin marketplace add mthds-ai/mthds-plugins && claude plugin install mthds@mthds-plugins'. Then tell me to /reload-plugins.
 ```
 
-Then install the MTHDS Claude Code plugin:
-
-```
-/plugin install mthds@mthds-plugins
-```
-
-Then reload plugins:
-
-```
-/reload-plugins
-```
-
-If that doesn't work, exit Claude Code and reopen it:
-
-```
-/exit
-```
-
-Build your first method:
+Then build your first method:
 
 ```
 /mthds-build A method to summarize articles with key takeaways for different audiences
@@ -87,7 +57,19 @@ Run it:
 
 ---
 
-## Get Started without Claude Code
+## Get Started with Codex
+
+Open Codex and paste this. Codex does the rest.
+
+```
+Install mthds: run bash -c 'npm install -g mthds && mthds-agent bootstrap && mthds-agent codex apply-config && codex plugin marketplace add mthds-ai/mthds-plugins'. Then tell me to restart Codex and run /plugins to install mthds.
+```
+
+Requires Codex 0.130.0+ (`npm install -g @openai/codex@latest` if needed). See the [mthds-plugins README](https://github.com/mthds-ai/mthds-plugins) for what `mthds-agent codex apply-config` does and manual install steps.
+
+---
+
+## Get Started without an AI Coding Agent
 
 ```bash
 uv tool install pipelex
@@ -99,6 +81,15 @@ pipelex init
 3. Author your own `.mthds` methods
 4. Validate with `pipelex validate bundle your_method.mthds`
 5. Run with `pipelex run bundle your_method.mthds`
+
+---
+
+## Starter Templates
+
+Two ready-to-fork templates depending on how you want to run methods:
+
+- **[`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python)** — Python project embedding the [`pipelex`](https://pypi.org/project/pipelex/) runtime directly. Best when you want to run methods in-process from a Python service, script, or notebook. Click *Use this template* on GitHub.
+- **[`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js)** — Next.js 16 + TypeScript app that calls a Pipelex API server via the [`mthds`](https://www.npmjs.com/package/mthds) SDK. Best when you want a TypeScript frontend/backend that talks to a remote (hosted or self-hosted) Pipelex runner. Ships with three demo pipelines (text entities, PDF summary, image generation).
 
 ---
 
@@ -127,7 +118,9 @@ Ready-to-run methods in the **[Cookbook](https://github.com/Pipelex/pipelex-cook
 |:-----------|:------------|
 | [`pipelex`](https://github.com/Pipelex/pipelex) | Python runtime — build and run AI methods |
 | [`mthds`](https://github.com/mthds-ai/mthds) | The MTHDS open standard — specification and docs |
-| [`mthds-plugins`](https://github.com/mthds-ai/mthds-plugins) | Claude Code plugin — skills for building, running, and editing methods |
+| [`mthds-plugins`](https://github.com/mthds-ai/mthds-plugins) | Claude Code + Codex skills plugin for building, running, and editing methods |
+| [`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python) | Starter template — Python project embedding the `pipelex` runtime |
+| [`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js) | Starter template — Next.js + TypeScript app calling the Pipelex API via the `mthds` SDK |
 | [`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) | Production-ready examples and tutorials |
 
 ---
