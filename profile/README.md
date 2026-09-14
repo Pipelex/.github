@@ -14,7 +14,6 @@
   </div>
   <br/>
 
-  <a href="https://github.com/Pipelex/pipelex/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License"></a>
   <a href="https://pypi.org/project/pipelex/"><img src="https://img.shields.io/pypi/v/pipelex?logo=pypi&logoColor=white&color=blue&style=flat-square" alt="PyPI"></a>
   <a href="https://go.pipelex.com/discord"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
 </div>
@@ -127,6 +126,8 @@ Ready-to-run methods in the **[Cookbook](https://github.com/Pipelex/pipelex-cook
 
 ## License
 
-All repositories are **MIT licensed** unless otherwise specified. See individual `LICENSE` files for details.
+The runtime and the servers that run methods — [`pipelex`](https://github.com/Pipelex/pipelex), [`pipelex-api`](https://github.com/Pipelex/pipelex-api) and [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) — are source-available under the **Elastic License 2.0** (ELv2). You may embed them in your own products, including services whose features run your methods, and run them for your own team or company; what the license rules out is hosting a service that runs methods for others. The [license page](https://docs.pipelex.com/latest/license/) explains how we read it, with concrete examples. Every version of them released before the switch stays under MIT.
+
+The SDKs, the starter templates, the UI libraries, the VS Code extension, the cookbook and the [MTHDS open standard](https://github.com/mthds-ai/mthds) are **MIT licensed**. [`kajson`](https://github.com/Pipelex/kajson) and [`pipelex-plugins`](https://github.com/Pipelex/pipelex-plugins) are licensed under **Apache 2.0**. Each repository's `LICENSE` file carries its terms.
 
 **"Pipelex" is a trademark of Evotis S.A.S.**
