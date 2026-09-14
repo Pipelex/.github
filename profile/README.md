@@ -88,7 +88,7 @@ pipelex init
 Two ready-to-fork templates depending on how you want to run methods:
 
 - **[`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python)** — Python project embedding the [`pipelex`](https://pypi.org/project/pipelex/) runtime directly. Best when you want to run methods in-process from a Python service, script, or notebook. Click *Use this template* on GitHub.
-- **[`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js)** — Next.js 16 + TypeScript app that calls a Pipelex API server via the [`mthds`](https://www.npmjs.com/package/mthds) SDK. Best when you want a TypeScript frontend/backend that talks to a remote (hosted or self-hosted) Pipelex runner. Ships with three demo pipelines (text entities, PDF summary, image generation).
+- **[`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js)** — Next.js 16 + TypeScript app that calls the Pipelex API via the [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk) SDK. Best when you want a TypeScript frontend/backend that talks to a remote (hosted or self-hosted) Pipelex runner. Ships with demo pipelines, from text entity extraction and PDF summaries to image generation.
 
 ---
 
@@ -119,7 +119,7 @@ Ready-to-run methods in the **[Cookbook](https://github.com/Pipelex/pipelex-cook
 | [`mthds`](https://github.com/mthds-ai/mthds) | The MTHDS open standard — specification and docs |
 | [`mthds-plugins`](https://github.com/mthds-ai/mthds-plugins) | Claude Code + Codex skills plugin for building, running, and editing methods |
 | [`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python) | Starter template — Python project embedding the `pipelex` runtime |
-| [`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js) | Starter template — Next.js + TypeScript app calling the Pipelex API via the `mthds` SDK |
+| [`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js) | Starter template — Next.js + TypeScript app calling the Pipelex API via `@pipelex/sdk` |
 | [`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) | Production-ready examples and tutorials |
 
 ---
