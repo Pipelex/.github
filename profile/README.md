@@ -95,7 +95,7 @@ pipelex run method github.com/Pipelex/methods/doc_summarizer --inputs inputs.jso
 
 ## Use the Hosted Pipelex API
 
-The hosted Pipelex API at `api.pipelex.com` runs methods durably — start a run, poll it, fetch the result — with file storage and a method catalog on top. It is currently in **private beta**: [join the waitlist](https://go.pipelex.com/waitlist), then get an API key at [app.pipelex.com](https://app.pipelex.com). The SDKs and starter templates below also work against a self-hosted [`pipelex-api`](https://github.com/Pipelex/pipelex-api) pointed to by `PIPELEX_BASE_URL`.
+The hosted Pipelex API at `api.pipelex.com` runs methods durably — start a run, poll it, fetch the result — with file storage and a method catalog on top. It is currently in **private beta**: [join the waitlist](https://go.pipelex.com/waitlist), then get an API key at [app.pipelex.com](https://app.pipelex.com). The SDKs also speak to a self-hosted [`pipelex-api`](https://github.com/Pipelex/pipelex-api) for its protocol routes, such as execute, validate, and codegen, when `PIPELEX_BASE_URL` points at your instance; durable runs, file storage, and the method catalog are the hosted API's own, and the starter templates and plugins are built on them.
 
 Three ways in:
 
@@ -127,7 +127,7 @@ pip install pipelex-sdk
 
 Two ready-to-fork templates, one per language, both calling the Pipelex API. Click *Use this template* on GitHub, then run the bundled `/bootstrap` skill in Claude Code to make the project yours.
 
-- **[`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js)** — Next.js 16 + TypeScript app calling the Pipelex API via [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk). Best when you want a TypeScript frontend or backend that talks to a remote Pipelex runner. Ships with demo pipelines, from text entity extraction and PDF summaries to image generation, plus a method pulled in from the public library by address.
+- **[`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js)** — Next.js 16 + TypeScript app calling the Pipelex API via [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk). Best when you want a TypeScript frontend or backend that talks to the hosted Pipelex API. Ships with demo pipelines, from text entity extraction and PDF summaries to image generation, plus a method pulled in from the public library by address.
 - **[`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python)** — Python CLI calling the Pipelex API via [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/), with no local runtime to install. Best when you want a script, service, or command-line tool that runs methods remotely and prints structured JSON with a cost report.
 
 To run methods in-process from Python instead, install the [`pipelex`](https://pypi.org/project/pipelex/) runtime and start from the [Cookbook](https://github.com/Pipelex/pipelex-cookbook).
