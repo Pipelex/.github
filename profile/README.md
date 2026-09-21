@@ -136,8 +136,8 @@ To run methods in-process from Python instead, install the [`pipelex`](https://p
 
 ## Configure AI Access
 
-- **[Pipelex Gateway](https://app.pipelex.com/) (Recommended)** — Free credits, single API key for LLMs, OCR / document extraction, and image generation across all major providers.
-- **Bring Your Own Keys** — Use existing API keys from OpenAI, Anthropic, Google, Mistral, etc. See [Configure AI Providers](https://docs.pipelex.com/latest/setup/configure-ai-providers/).
+- **Bring Your Own Keys** — Use existing API keys from OpenAI, Anthropic, Google, Mistral, etc., or a single [OpenRouter](https://openrouter.ai/) key for many models at once. See [Configure AI Providers](https://docs.pipelex.com/latest/setup/configure-ai-providers/).
+- **[Pipelex API](https://app.pipelex.com/)** — Sign up, create a Pipelex API key, and run your methods on our hosted API with no provider keys of your own.
 - **Local AI** — Ollama, vLLM, LM Studio, or llama.cpp — no API keys required. See [Configure AI Providers](https://docs.pipelex.com/latest/setup/configure-ai-providers/).
 
 ---
