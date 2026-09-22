@@ -20,16 +20,18 @@ The server runs on your own machine, so it carries an API key of its own — cre
 
 On Claude Code and Codex the [Pipelex plugin](https://github.com/Pipelex/pipelex-plugins) already declares the workshop, so install the plugin instead and skip the command above.
 
-**Then ask for something.** On the console, attach a file first:
+**Then ask for something.** On the console:
 
 > What methods do I have?
 >
-> Run the invoice method on the file I attached.
+> Run the invoice method on https://example.com/invoice.pdf
 
 On the workshop, where the server reaches the files you are writing:
 
 > Validate the bundle in `./methods/invoices` and run it on `invoice.pdf`.
 
 You get a run id straight away, and you can ask for its status, its results or the files it produced at any time.
+
+Give the file as a URL the connector can reach. In ChatGPT you can attach it to the conversation instead and ask for a run on it; the other connector hosts have no channel yet for handing a server the file you attached.
 
 **Next:** [what Pipelex is](https://go.pipelex.com/product) · [plans and self-serve](https://go.pipelex.com/pricing) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)

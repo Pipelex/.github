@@ -48,9 +48,11 @@ https://mcp.pipelex.com/mcp
 
 > What methods do I have?
 >
-> Run the invoice method on the file I attached.
+> Run the invoice method on https://example.com/invoice.pdf
 
 You get a run id straight away, and you can ask for its status, its results or the files it produced at any time.
+
+Give the file as a URL the connector can reach. In ChatGPT you can attach it to the conversation instead and ask for a run on it; the other connector hosts have no channel yet for handing a server the file you attached.
 
 **The other two ways.** Turn the method into a webapp with the [method-app template](https://github.com/Pipelex/pipelex-method-apps), or use it via API in any software through `POST /v1/start` — in TypeScript with [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk), in Python with [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/), or with any HTTP client.
 
