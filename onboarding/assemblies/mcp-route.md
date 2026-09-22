@@ -12,8 +12,14 @@ Pick one server for a given host: the **workshop** wherever there is a filesyste
 
 On Claude Code and Codex the [Pipelex plugin](https://github.com/Pipelex/pipelex-plugins) already declares the workshop, so install the plugin instead and skip the command above.
 
-**Then ask for something.**
+**Then ask for something.** On the console, attach a file first:
 
-{% include "blocks/first-run/mcp-host.md" %}
+{% include "blocks/first-run/chat-host-ask.md" %}
+
+On the workshop, where the server reaches the files you are writing:
+
+{% include "blocks/first-run/workshop-ask.md" %}
+
+{% include "blocks/first-run/run-id.md" %}
 
 {% include "blocks/links.md" %} · {% include "blocks/links-tail/discord.md" %}

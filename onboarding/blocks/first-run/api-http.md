@@ -8,6 +8,7 @@ curl -s https://api.pipelex.com/v1/start \
   }'
 # 202 → {"pipeline_run_id": "..."}
 
+RUN_ID=...     # the pipeline_run_id the start returned
 curl -s https://api.pipelex.com/v1/runs/$RUN_ID/results \
   -H "Authorization: Bearer $PIPELEX_API_KEY"
 ```

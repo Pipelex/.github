@@ -44,6 +44,14 @@ https://mcp.pipelex.com/mcp
 
 `/pipelex-design` writes the method, the hook checks it on every edit, and `/pipelex-run` starts it and prints a run id you can come back to.
 
+**On a chat host**, where methods are run rather than built:
+
+> What methods do I have?
+>
+> Run the invoice method on the file I attached.
+
+You get a run id straight away, and you can ask for its status, its results or the files it produced at any time.
+
 **The other two ways.** Turn the method into a webapp with the [method-app template](https://github.com/Pipelex/pipelex-method-apps), or use it via API in any software through `POST /v1/start` — in TypeScript with [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk), in Python with [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/), or with any HTTP client.
 
 **Next:** [what Pipelex is](https://go.pipelex.com/product) · [plans and self-serve](https://go.pipelex.com/pricing) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)

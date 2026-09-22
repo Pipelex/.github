@@ -16,14 +16,18 @@ https://mcp.pipelex.com/mcp
 claude mcp add pipelex --env PIPELEX_API_KEY=plx_sk_... -- npx -y @pipelex/mcp
 ```
 
-Create one in your console at [app.pipelex.com](https://app.pipelex.com). Needs Node.js 24 or later; the host fetches the server on demand, so there is nothing to install globally.
+The server runs on your own machine, so it carries an API key of its own — create one in your console at [app.pipelex.com](https://app.pipelex.com). Needs Node.js 24 or later; the host fetches the server on demand, so there is nothing to install globally.
 
 On Claude Code and Codex the [Pipelex plugin](https://github.com/Pipelex/pipelex-plugins) already declares the workshop, so install the plugin instead and skip the command above.
 
-**Then ask for something.**
+**Then ask for something.** On the console, attach a file first:
 
 > What methods do I have?
 >
+> Run the invoice method on the file I attached.
+
+On the workshop, where the server reaches the files you are writing:
+
 > Validate the bundle in `./methods/invoices` and run it on `invoice.pdf`.
 
 You get a run id straight away, and you can ask for its status, its results or the files it produced at any time.

@@ -28,6 +28,10 @@
 
 {% include "blocks/first-run/agent-short.md" %}
 
+**On a chat host**, where methods are run rather than built:
+
+{% include "blocks/first-run/chat-host.md" %}
+
 **The other two ways.** Turn the method into a webapp with the [method-app template](https://github.com/Pipelex/pipelex-method-apps), or use it via API in any software through `POST /v1/start` — in TypeScript with [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk), in Python with [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/), or with any HTTP client.
 
 {% include "blocks/links.md" %} · {% include "blocks/links-tail/discord.md" %}
