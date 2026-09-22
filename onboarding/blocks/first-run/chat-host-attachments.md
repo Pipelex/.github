@@ -1,1 +1,0 @@
-Give the file as a URL the connector can reach. In ChatGPT you can attach it to the conversation instead and ask for a run on it; the other connector hosts have no channel yet for handing a server the file you attached.
