@@ -1,0 +1,31 @@
+## Get started
+
+Pipelex runs your AI methods — write a method once, then run it from your agent via MCP, turn it into a webapp, or use it via API in any software. This repository is how a chat or a coding agent reaches it.
+
+Pick one server for a given host: the **workshop** wherever there is a filesystem, the **console** everywhere else. Never both — the two deployments register the same tool names.
+
+**Hosted console** — ChatGPT, claude.ai, Claude Desktop, Cowork. Add Pipelex as a custom connector by its URL, then sign in with your Pipelex account when the host asks. Nothing to install, and no key at all — the connector runs on your signed-in session:
+
+```
+https://mcp.pipelex.com/mcp
+```
+
+**Local workshop** — Claude Code, Codex, Cursor.
+
+```bash
+claude mcp add pipelex --env PIPELEX_API_KEY=plx_sk_... -- npx -y @pipelex/mcp
+```
+
+Create one in your console at [app.pipelex.com](https://app.pipelex.com). Needs Node.js 24 or later; the host fetches the server on demand, so there is nothing to install globally.
+
+On Claude Code and Codex the [Pipelex plugin](https://github.com/Pipelex/pipelex-plugins) already declares the workshop, so install the plugin instead and skip the command above.
+
+**Then ask for something.**
+
+> What methods do I have?
+>
+> Validate the bundle in `./methods/invoices` and run it on `invoice.pdf`.
+
+You get a run id straight away, and you can ask for its status, its results or the files it produced at any time.
+
+**Next:** [what Pipelex is](https://go.pipelex.com/product) · [plans and self-serve](https://go.pipelex.com/pricing) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)
