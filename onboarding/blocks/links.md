@@ -1,0 +1,1 @@
+**Next:** [what Pipelex is](https://go.pipelex.com/product) · [plans and self-serve](https://go.pipelex.com/pricing) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com)
