@@ -36,4 +36,4 @@
 
 {% include "blocks/links.md" %} · {% include "blocks/links-tail/discord.md" %}
 
-{% include "blocks/open-source.md" %}
+{% include "blocks/open-source/" ~ (open_source | default("runtime")) ~ ".md" %}
