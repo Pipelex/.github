@@ -58,4 +58,4 @@ Give the file as a URL the connector can reach. In ChatGPT you can attach it to 
 
 **Next:** [what Pipelex is](https://go.pipelex.com/product) · [plans and self-serve](https://go.pipelex.com/pricing) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)
 
-Prefer to run it yourself? This repository is the Pipelex runtime, source-available under the Elastic License 2.0 — its own install and configuration are below.
+Prefer to run it yourself? This repository is the Pipelex runtime — its own install and configuration are below.
