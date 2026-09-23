@@ -4,7 +4,7 @@ Pipelex runs your AI methods — write a method once, then run it from your agen
 
 **1. Sign up at [app.pipelex.com](https://app.pipelex.com).**
 
-**2. Install the plugin for your agent.**
+**2. Install the Pipelex plugin in your agent, or add the Pipelex MCP to your chatbot.**
 
 <details open><summary><b>Claude Code</b></summary>
 
@@ -13,7 +13,9 @@ claude plugin marketplace add Pipelex/pipelex-plugins
 claude plugin install pipelex@pipelex-plugins
 ```
 
-Claude asks for an API key when you enable the plugin, and stores it in your OS keychain — create one in your console at [app.pipelex.com](https://app.pipelex.com). The `.mthds` validation hook and the Pipelex MCP tools load with it; nothing else to install.
+Claude Code asks for an API key when you enable the plugin, and stores it in your OS keychain — create one in your console at [app.pipelex.com](https://app.pipelex.com). The skills, the hook that checks every edit and the Pipelex tools load with it; nothing else to install.
+
+Claude Code also loads what you have added to your Claude account, so if the Pipelex MCP is there, turn it off in Claude Code with `/mcp`: an agent with the plugin never takes both, since they register the same tool names.
 
 </details>
 
@@ -28,9 +30,9 @@ Restart Codex, run `/plugins` to install `pipelex`, and trust the plugin hook on
 
 </details>
 
-<details><summary><b>Chat hosts — ChatGPT, claude.ai, Claude Desktop, Cowork</b></summary>
+<details><summary><b>Chatbots — ChatGPT, Claude</b></summary>
 
-Add Pipelex as a custom connector by its URL, then sign in with your Pipelex account when the host asks. Nothing to install, and no key at all — the connector runs on your signed-in session:
+Add the Pipelex MCP in your chatbot's settings by the address below — in Claude, that is **Add custom connector** — then sign in with your Pipelex account when asked. Nothing to install and no key: the Pipelex MCP runs on your signed-in session.
 
 ```
 https://mcp.pipelex.com/mcp
@@ -40,11 +42,11 @@ https://mcp.pipelex.com/mcp
 
 **3. Ask for the method you want.**
 
-> Design a method that reads an invoice PDF and returns the supplier, the total and the line items. Then run it on `~/Downloads/invoice.pdf`.
+> Design a method that reads an invoice PDF and returns the supplier, the total and the line items. Then run it on `~/Downloads/invoice.pdf` and save it to my Pipelex account.
 
-`/pipelex-design` writes the method, the hook checks it on every edit, and `/pipelex-run` starts it and prints a run id you can come back to.
+`/pipelex-design` writes the method, the hook checks it on every edit, `/pipelex-run` starts it and prints a run id you can come back to, and `/pipelex-catalog` saves it to your account, where your chatbot can run it too.
 
-**On a chat host**, where methods are run rather than built:
+**In your chatbot**, where methods are run rather than built:
 
 > What methods do I have?
 >
@@ -52,7 +54,7 @@ https://mcp.pipelex.com/mcp
 
 You get a run id straight away, and you can ask for its status, its results or the files it produced at any time.
 
-Give the file as a URL the connector can reach. In ChatGPT you can attach it to the conversation instead and ask for a run on it; the other connector hosts have no channel yet for handing a server the file you attached.
+Give the file as a URL the Pipelex MCP can reach. In ChatGPT you can attach it to the conversation instead and ask for a run on it; Claude has no way yet to hand the Pipelex MCP a file you attached.
 
 **The other two ways.** Turn the method into a webapp with the [method-app template](https://github.com/Pipelex/pipelex-method-apps), or use it via API in any software through `POST /v1/start` — in TypeScript with [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk), in Python with [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/), or with any HTTP client.
 
