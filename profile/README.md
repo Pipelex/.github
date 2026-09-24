@@ -3,8 +3,7 @@
 
   <br/>
   <br/>
-  <h2 align="center">Turn your expertise into an AI-powered App/MCP/API</h2>
-  <p align="center">Pipelex runs your AI methods. Write a method once: a webapp runs it for your team or as SaaS for your customers, your agent runs it over MCP, your software runs it over the API.</p>
+  <h2 align="center">Turn your expertise into an AI-powered App, MCP or API</h2>
 
   <div>
     <a href="https://go.pipelex.com/demo"><strong>Demo</strong></a> -
