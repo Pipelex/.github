@@ -13,4 +13,6 @@ The files under `rendered/` are the onboarding text that Pipelex repositories, d
 <!-- /onboarding -->
 ```
 
+A whole get-started text, such as `front-door.md` or `mcp-route.md`, opens with its own `##` heading. `api-key.md` has none: it is the sign-up line and the API-key step, and it sits inside a section of the page that carries it, where a starter, a template or an SDK lists what a reader needs.
+
 So an edit to one of those regions, or to a file here, is an edit the next generation overwrites. If something in it is wrong — a command that fails, a broken link, a step that does not work on your host — please [open an issue](https://github.com/Pipelex/.github/issues) and we will fix it at the source. That is the fastest route, and it fixes it everywhere at once rather than on the page you happened to be reading.
