@@ -1,213 +1,162 @@
 <div align="center">
-  <a href="https://www.pipelex.com/"><img src="https://raw.githubusercontent.com/Pipelex/pipelex/main/.github/assets/logo.png" alt="Pipelex Logo" width="400"></a>
+  <a href="https://www.pipelex.com/"><img src="https://raw.githubusercontent.com/Pipelex/pipelex/main/.github/assets/logo.png" alt="Pipelex Logo" width="400" style="max-width: 100%; height: auto;"></a>
 
   <br/>
   <br/>
-  <h2 align="center">Executable AI Methods</h2>
-  <p align="center">Declare multi-step AI methods in typed <code>.mthds</code> files — deterministic orchestration, structured outputs, repeatable results.</p>
+  <h2 align="center">Turn your expertise into an AI-powered App/MCP/API</h2>
+  <p align="center">Pipelex runs your AI methods. Write a method once: a webapp runs it for your team or as SaaS for your customers, your agent runs it over MCP, your software runs it over the API.</p>
 
   <div>
-    <a href="https://go.pipelex.com/demo"><strong>Demo (2min)</strong></a> -
-    <a href="https://docs.pipelex.com/"><strong>Docs</strong></a> -
+    <a href="https://go.pipelex.com/demo"><strong>Demo</strong></a> -
+    <a href="https://docs.pipelex.com/"><strong>Documentation</strong></a> -
     <a href="https://mthds.sh"><strong>Hub</strong></a> -
     <a href="https://go.pipelex.com/discord"><strong>Discord</strong></a>
   </div>
-  <br/>
-
-  <a href="https://pypi.org/project/pipelex/"><img src="https://img.shields.io/pypi/v/pipelex?logo=pypi&logoColor=white&color=blue&style=flat-square" alt="PyPI"></a>
-  <a href="https://go.pipelex.com/discord"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
 </div>
 
 <br/>
 
-## What a Method Looks Like
+<!-- onboarding: front-door -->
+<!-- Generated from the Pipelex onboarding source; this region is replaced from https://raw.githubusercontent.com/Pipelex/.github/main/onboarding/rendered/front-door--open_source-org.md — do not edit it here. -->
+## Quick start
 
-```toml
-[pipe.summarize_article]
-type    = "PipeLLM"
-inputs  = { article = "Text", audience = "Text" }
-output  = "Text"
-prompt  = "Summarize $article in three bullet points for $audience."
-```
+Pipelex runs your AI methods — write a method once, then run it from your agent via MCP, turn it into a webapp, or use it via API in any software.
 
-From here, Pipelex handles model routing across 60+ models, structured output parsing, and pipeline orchestration.
+**1. Sign up at [app.pipelex.com](https://app.pipelex.com).**
 
-A method is written once in the [MTHDS](https://mthds.ai) open standard and runs anywhere Pipelex does: on your machine with the `pipelex` runtime, on a server you host with `pipelex-api`, or on the hosted Pipelex API.
+**2. Install the Pipelex plugin in your coding agent.** The plugin is how you build methods: it gives your agent the skills that write and run them, a hook that checks every edit, and the Pipelex tools.
 
----
-
-## Get Started with Claude Code
-
-Open Claude Code and paste this. Claude does the rest.
-
-```
-Install mthds: run bash -c 'npm install -g mthds && mthds-agent bootstrap && claude plugin marketplace add mthds-ai/mthds-plugins && claude plugin install mthds@mthds-plugins'. Then tell me to /reload-plugins.
-```
-
-Then build your first method:
-
-```
-/mthds-build A method to summarize articles with key takeaways for different audiences
-```
-
-Run it:
-
-```
-/mthds-run
-```
-
-This installs the local toolchain and runs methods on your machine. To run them on the hosted Pipelex API instead, install [`pipelex-plugins`](#use-the-hosted-pipelex-api) — nothing to install locally beyond the plugin.
-
----
-
-## Get Started with Codex
-
-Open Codex and paste this. Codex does the rest.
-
-```
-Install mthds: run bash -c 'npm install -g mthds && mthds-agent bootstrap && mthds-agent codex apply-config && codex plugin marketplace add mthds-ai/mthds-plugins'. Then tell me to restart Codex and run /plugins to install mthds.
-```
-
-Requires Codex 0.130.0+ (`npm install -g @openai/codex@latest` if needed). See the [mthds-plugins README](https://github.com/mthds-ai/mthds-plugins) for what `mthds-agent codex apply-config` does and manual install steps.
-
----
-
-## Get Started without an AI Coding Agent
+<details open><summary><b>Claude Code</b></summary>
 
 ```bash
-uv tool install pipelex
-pipelex init
-```
-
-1. Install the [VS Code extension](https://go.pipelex.com/vscode) for `.mthds` syntax highlighting — Cursor and other VS Code forks get it from [Open VSX](https://open-vsx.org/extension/Pipelex/pipelex)
-2. Browse methods on the [MTHDS Hub](https://mthds.sh) and in the [public method library](https://github.com/Pipelex/methods) for inspiration
-3. Author your own `.mthds` methods
-4. Validate with `pipelex validate bundle your_method.mthds`
-5. Run with `pipelex run bundle your_method.mthds`
-
-A method from the public library runs by its address, with nothing to install first:
-
-```bash
-pipelex run method github.com/Pipelex/methods/doc_summarizer --inputs inputs.json
-```
-
----
-
-## Use the Hosted Pipelex API
-
-The hosted Pipelex API at `api.pipelex.com` runs methods durably — start a run, poll it, fetch the result — with file storage and a method catalog on top. It is currently in **private beta**: [join the waitlist](https://go.pipelex.com/waitlist), then get an API key at [app.pipelex.com](https://app.pipelex.com). The SDKs also speak to a self-hosted [`pipelex-api`](https://github.com/Pipelex/pipelex-api) for its protocol routes, such as execute, validate, and codegen, when `PIPELEX_BASE_URL` points at your instance; durable runs, file storage, and the method catalog are the hosted API's own, and the starter templates and plugins are built on them.
-
-Three ways in:
-
-**From a coding agent — [`pipelex-plugins`](https://github.com/Pipelex/pipelex-plugins).** Skills and hooks for Claude Code, Codex, and Mistral Vibe, with no local toolchain: methods are validated and run through the Pipelex MCP server, which the plugin launches for you.
-
-```
 claude plugin marketplace add Pipelex/pipelex-plugins
 claude plugin install pipelex@pipelex-plugins
 ```
 
-For Codex, `codex plugin marketplace add Pipelex/pipelex-plugins`, restart, then `/plugins` to install `pipelex` (Codex 0.141+). Then `/pipelex-design A method to …` builds a method, `/pipelex-inputs` prepares its inputs and offers to run it, and `/pipelex-integrate` wires it into your codebase with generated types.
+Claude Code asks for an API key when you enable the plugin, and stores it in your OS keychain — create one in your console at [app.pipelex.com](https://app.pipelex.com). The skills, the hook that checks every edit and the Pipelex tools load with it; nothing else to install.
 
-**From any MCP host — [`@pipelex/mcp`](https://github.com/Pipelex/pipelex-mcp).** One capability core, two servers: a local workshop that coding agents spawn with `npx` and that reads `.mthds` files straight from disk, and a hosted console you add as a custom connector in ChatGPT, claude.ai, or Claude Desktop, with nothing to install.
+Claude Code also loads what you have added to your Claude account, so if the Pipelex MCP is there, turn it off in Claude Code with `/mcp`: an agent with the plugin never takes both, since they register the same tool names.
 
-```bash
-claude mcp add pipelex --env PIPELEX_API_KEY=plx_sk_... -- npx -y @pipelex/mcp
-```
+</details>
 
-**From your own code — the SDKs.** [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk) for TypeScript and [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/) for Python cover the MTHDS Protocol routes, the durable run lifecycle, storage, and the product surface, and both ship an offline check that keeps generated types in sync with your methods.
+<details><summary><b>Codex</b></summary>
 
 ```bash
-npm install @pipelex/sdk
-pip install pipelex-sdk
+codex plugin marketplace add Pipelex/pipelex-plugins
+export PIPELEX_API_KEY=plx_sk_...     # create one in your console at app.pipelex.com
 ```
 
----
+Restart Codex, run `/plugins` to install `pipelex`, and trust the plugin hook on first run. Requires Codex 0.141 or later.
 
-## Starter Templates
+</details>
 
-Two ready-to-fork templates, one per language, both calling the Pipelex API. Click *Use this template* on GitHub, then run the bundled `/bootstrap` skill in Claude Code to make the project yours.
+**3. Ask your agent for the method you want.**
 
-- **[`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js)** — Next.js 16 + TypeScript app calling the Pipelex API via [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk). Best when you want a TypeScript frontend or backend that talks to the hosted Pipelex API. Ships with demo pipelines, from text entity extraction and PDF summaries to image generation, plus a method pulled in from the public library by address.
-- **[`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python)** — Python CLI calling the Pipelex API via [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/), with no local runtime to install. Best when you want a script, service, or command-line tool that runs methods remotely and prints structured JSON with a cost report.
+> Design a method that reads an invoice PDF and returns the supplier, the total and the line items. Then run it on `~/Downloads/invoice.pdf` and save it to my Pipelex account.
 
-To run methods in-process from Python instead, install the [`pipelex`](https://pypi.org/project/pipelex/) runtime and start from the [Cookbook](https://github.com/Pipelex/pipelex-cookbook).
+`/pipelex-design` writes the method, the hook checks it on every edit, `/pipelex-run` starts it and prints a run id you can come back to, and `/pipelex-catalog` saves it to your account, where your chatbot can run it too.
 
----
+**Run your methods from your chatbot.** The Pipelex MCP is a connector for your chatbot (ChatGPT, Claude): it gives it access to the Pipelex service, so it can list the methods saved in your account and run them right in the conversation. Your methods become your chatbot's tools. To build a method, use the Pipelex plugin in a coding agent such as Claude Code or Codex, as in steps 2 and 3 above.
 
-## Configure AI Access
+Add the Pipelex MCP in your chatbot's settings by the address below — in Claude, that is **Add custom connector** — then sign in with your Pipelex account when asked. Nothing to install and no key: the Pipelex MCP runs on your signed-in session.
 
-- **[Pipelex Gateway](https://app.pipelex.com/) (Recommended)** — Free credits, single API key for LLMs, OCR / document extraction, and image generation across all major providers.
-- **Bring Your Own Keys** — Use existing API keys from OpenAI, Anthropic, Google, Mistral, etc. See [Configure AI Providers](https://docs.pipelex.com/latest/setup/configure-ai-providers/).
-- **Local AI** — Ollama, vLLM, LM Studio, or llama.cpp — no API keys required. See [Configure AI Providers](https://docs.pipelex.com/latest/setup/configure-ai-providers/).
+```
+https://mcp.pipelex.com/mcp
+```
 
----
+Then ask your chatbot:
 
-## Examples
+> What methods do I have?
+>
+> Run the invoice method on https://example.com/invoice.pdf
 
-- **[Cookbook](https://github.com/Pipelex/pipelex-cookbook)** — Ready-to-run methods for the `pipelex` runtime: classification, extraction, analysis, generation, and more.
-- **[Public method library](https://github.com/Pipelex/methods)** — Packaged methods you run by address, from document extraction and invoice processing to slide design and image generation.
+You get a run id straight away, and you can ask for its status, its results or the files it produced at any time.
 
-## Community & Support
+Give the file as a URL the Pipelex MCP can reach. In ChatGPT you can attach it to the conversation instead and ask for a run on it; Claude has no way yet to hand the Pipelex MCP a file you attached.
 
-- **[Discord](https://go.pipelex.com/discord)** — Get help, share methods, meet the team
-- **[Documentation](https://docs.pipelex.com/)** — Guides and reference
-- **[GitHub Issues](https://github.com/Pipelex/pipelex/issues)** — Report bugs and request features
-- **[security@pipelex.com](mailto:security@pipelex.com)** — Security and privacy concerns
+**The other two ways.** Turn the method into a webapp with the [method-app template](https://github.com/Pipelex/pipelex-method-apps), or use it via API in any software through `POST /v1/start` — in TypeScript with [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk), in Python with [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/), or with any HTTP client.
 
-## Key Repositories
+**Next:** [what Pipelex is](https://go.pipelex.com/product) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)
 
-**Runtime and servers**
+Prefer to run it yourself? The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs your methods on your own machine — it and the rest of our repositories are listed below.
+<!-- /onboarding -->
+
+## What a method looks like
+
+A method is a reusable, typed AI procedure, written in [MTHDS](https://mthds.ai/latest/), an open standard, and saved as a `.mthds` file. Each step is explicit, each output is structured, and every run is repeatable.
+
+```toml
+domain    = "articles"
+main_pipe = "summarize_article"
+
+[pipe.summarize_article]
+type        = "PipeLLM"
+description = "Summarize an article for a given audience"
+inputs      = { article = "Text", audience = "Text" }
+output      = "Text"
+prompt      = "Summarize $article in three bullet points for $audience."
+```
+
+From here, Pipelex handles model routing across providers, structured output parsing, and pipeline orchestration.
+
+## Run it yourself
+
+The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs methods on your own machine, against the model providers you choose or a local model; its README carries the install, the configuration and the first run. [`pipelex-api`](https://github.com/Pipelex/pipelex-api) is the runner API you host yourself, and the editor extension highlights and checks `.mthds` files, from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=pipelex.pipelex) or the [Open VSX Registry](https://open-vsx.org/extension/Pipelex/pipelex) for Cursor, Windsurf and other VS Code forks.
+
+## Repositories
+
+**Build and run your methods**
 
 | Repository | Description |
 |:-----------|:------------|
-| [`pipelex`](https://github.com/Pipelex/pipelex) | Python runtime — build and run AI methods (PyPI: `pipelex`) |
-| [`pipelex-api`](https://github.com/Pipelex/pipelex-api) | REST API server that runs methods — the reference implementation of the MTHDS Protocol (Docker Hub: `pipelex/pipelex-api`) |
-| [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) | MCP servers over the Pipelex API — a local workshop for coding agents and a hosted console for ChatGPT and Claude (npm: `@pipelex/mcp`) |
-
-**Agent plugins**
-
-| Repository | Description |
-|:-----------|:------------|
-| [`pipelex-plugins`](https://github.com/Pipelex/pipelex-plugins) | Skills and hooks for Claude Code, Codex, and Mistral Vibe — CLI-free, built for the hosted API and the MCP server |
-| [`mthds-plugins`](https://github.com/mthds-ai/mthds-plugins) | Claude Code + Codex skills plugin for building, running, and editing methods with the local toolchain |
-
-**SDKs and starters**
-
-| Repository | Description |
-|:-----------|:------------|
+| [`pipelex-plugins`](https://github.com/Pipelex/pipelex-plugins) | The Pipelex plugin for Claude Code and Codex: skills that build and run methods, a hook that checks every edit, and the Pipelex tools |
+| [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) | The Pipelex MCP, which ChatGPT or Claude adds to run the methods saved in your account |
+| [`pipelex-method-apps`](https://github.com/Pipelex/pipelex-method-apps) | Template for turning a method into a webapp, with its input form and result view generated from the method |
 | [`pipelex-sdk-js`](https://github.com/Pipelex/pipelex-sdk-js) | TypeScript SDK for the Pipelex API (npm: `@pipelex/sdk`) |
 | [`pipelex-sdk-python`](https://github.com/Pipelex/pipelex-sdk-python) | Python SDK for the Pipelex API (PyPI: `pipelex-sdk`) |
-| [`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js) | Starter template — Next.js + TypeScript app calling the Pipelex API via `@pipelex/sdk` |
-| [`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python) | Starter template — Python CLI calling the Pipelex API via `pipelex-sdk` |
+| [`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js) | Starter template: a Next.js app that runs methods through `@pipelex/sdk`, with worked examples to copy |
+| [`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python) | Starter template: a Python CLI that runs methods through `pipelex-sdk` |
 | [`n8n-nodes-pipelex`](https://github.com/Pipelex/n8n-nodes-pipelex) | n8n community node that runs methods on a Pipelex API server (npm: `n8n-nodes-pipelex`) |
+
+**Run it yourself**
+
+| Repository | Description |
+|:-----------|:------------|
+| [`pipelex`](https://github.com/Pipelex/pipelex) | The Pipelex runtime, which runs methods on your own machine (PyPI: `pipelex`) |
+| [`pipelex-api`](https://github.com/Pipelex/pipelex-api) | The runner API you host yourself, the reference implementation of the MTHDS Protocol (Docker Hub: `pipelex/pipelex-api`) |
+| [`vscode-pipelex`](https://github.com/Pipelex/vscode-pipelex) | The VS Code and Cursor extension, the `plxt` formatter and linter, and the language server for `.mthds` (PyPI: `pipelex-tools`) |
 
 **Methods and examples**
 
 | Repository | Description |
 |:-----------|:------------|
-| [`methods`](https://github.com/Pipelex/methods) | The public method library — packaged methods, run by address |
-| [`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) | Production-ready examples and tutorials |
-| [`cocode`](https://github.com/Pipelex/cocode) | Codebase analysis CLI built on Pipelex — changelogs, doc updates, drift proofreading (PyPI: `cocode`) |
+| [`methods`](https://github.com/Pipelex/methods) | The public method library: packaged methods to run by their address or to fork |
+| [`pipelex-cookbook`](https://github.com/Pipelex/pipelex-cookbook) | Examples and tutorials for the Pipelex runtime |
+| [`cocode`](https://github.com/Pipelex/cocode) | Codebase analysis CLI built on Pipelex: changelogs, doc updates, drift proofreading (PyPI: `cocode`) |
 
 **The MTHDS standard**
 
 | Repository | Description |
 |:-----------|:------------|
-| [`mthds`](https://github.com/mthds-ai/mthds) | The MTHDS open standard — specification and docs ([mthds.ai](https://mthds.ai)) |
-| [`mthds-js`](https://github.com/mthds-ai/mthds-js) | The `mthds` CLI and SDK — install methods, set up a runner, call any MTHDS API (npm: `mthds`) |
-| [`mthds-python`](https://github.com/mthds-ai/mthds-python) | Python implementation of the MTHDS Protocol — typed client and the base structures methods are defined in (PyPI: `mthds`) |
-| [`mthds-starter-js`](https://github.com/mthds-ai/mthds-starter-js) | Starter template — Next.js app running methods through the `mthds` SDK against any MTHDS API |
+| [`mthds`](https://github.com/mthds-ai/mthds) | The MTHDS open standard: specification and docs ([mthds.ai](https://mthds.ai)) |
+| [`mthds-js`](https://github.com/mthds-ai/mthds-js) | The `mthds` CLI and SDK for any MTHDS API (npm: `mthds`) |
+| [`mthds-python`](https://github.com/mthds-ai/mthds-python) | Python implementation of the MTHDS Protocol: a typed client and the base structures methods are defined in (PyPI: `mthds`) |
+| [`mthds-starter-js`](https://github.com/mthds-ai/mthds-starter-js) | Starter template: a Next.js app running methods through the `mthds` SDK against any MTHDS API |
 
-**Tooling and libraries**
+**Libraries**
 
 | Repository | Description |
 |:-----------|:------------|
-| [`vscode-pipelex`](https://github.com/Pipelex/vscode-pipelex) | VS Code / Cursor extension, the `plxt` formatter and linter, and the language server for `.mthds` (PyPI: `pipelex-tools`) |
 | [`mthds-ui`](https://github.com/Pipelex/mthds-ui) | React graph viewer for method pipelines (npm: `@pipelex/mthds-ui`) |
 | [`mthds-form`](https://github.com/Pipelex/mthds-form) | Headless form kernel and React controls for method inputs (npm: `@pipelex/mthds-form`) |
-| [`kajson`](https://github.com/Pipelex/kajson) | Universal JSON encoder/decoder for Python with pydantic v2 support — the serialization layer under `pipelex` (PyPI: `kajson`) |
+| [`kajson`](https://github.com/Pipelex/kajson) | JSON encoder and decoder for Python with pydantic v2 support, the serialization layer under `pipelex` (PyPI: `kajson`) |
 
----
+## Community
+
+- **[Discord](https://go.pipelex.com/discord)**: get help, share methods, meet the team
+- **[Documentation](https://docs.pipelex.com/)**: guides and reference
+- **[GitHub Issues](https://github.com/Pipelex/pipelex/issues)**: report bugs and request features
+- **[security@pipelex.com](mailto:security@pipelex.com)**: security and privacy concerns
 
 ## License
 
