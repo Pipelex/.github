@@ -73,7 +73,7 @@ You get a run id straight away, and you can ask for its status, its results or t
 
 Give the file as a URL the Pipelex MCP can reach. In ChatGPT you can attach it to the conversation instead and ask for a run on it; Claude has no way yet to hand the Pipelex MCP a file you attached.
 
-**The other two ways, built by your agent too.** Ask it for a webapp around the method, and `/pipelex-scaffold` creates a new app from the [method-app template](https://github.com/Pipelex/pipelex-method-apps) and leaves it running on your machine. Ask it to call the method from your TypeScript or Python code, and `/pipelex-integrate` generates the method's types and one typed call that runs it, through the TypeScript SDK [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk) or the Python SDK [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/). Any other software runs a method via API through `POST /v1/start`, with any HTTP client.
+**The other two ways, built by your agent too.** Ask it for a webapp around the method, and `/pipelex-scaffold` creates a new app from the [method-app template](https://github.com/Pipelex/pipelex-sdk/tree/main/method-apps) and leaves it running on your machine. Ask it to call the method from your TypeScript or Python code, and `/pipelex-integrate` generates the method's types and one typed call that runs it, through the TypeScript SDK [`@pipelex/sdk`](https://www.npmjs.com/package/@pipelex/sdk) or the Python SDK [`pipelex-sdk`](https://pypi.org/project/pipelex-sdk/). Any other software runs a method via API through `POST /v1/start`, with any HTTP client.
 
 **Next:** [what Pipelex is](https://go.pipelex.com/product) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)
 
@@ -110,9 +110,9 @@ The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs methods on your o
 |:-----------|:------------|
 | [`pipelex-plugins`](https://github.com/Pipelex/pipelex-plugins) | The Pipelex plugin for Claude Code and Codex: skills that build and run methods, a hook that checks every edit, and the Pipelex tools |
 | [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) | The Pipelex MCP, which ChatGPT or Claude adds to run the methods saved in your account |
-| [`pipelex-method-apps`](https://github.com/Pipelex/pipelex-method-apps) | Template for turning a method into a webapp, with its input form and result view generated from the method |
-| [`pipelex-sdk-js`](https://github.com/Pipelex/pipelex-sdk-js) | TypeScript SDK for the Pipelex API (npm: `@pipelex/sdk`) |
-| [`pipelex-sdk-python`](https://github.com/Pipelex/pipelex-sdk-python) | Python SDK for the Pipelex API (PyPI: `pipelex-sdk`) |
+| [`pipelex-sdk/method-apps`](https://github.com/Pipelex/pipelex-sdk/tree/main/method-apps) | Template for turning a method into a webapp, with its input form and result view generated from the method |
+| [`pipelex-sdk/js`](https://github.com/Pipelex/pipelex-sdk/tree/main/js) | TypeScript SDK for the Pipelex API (npm: `@pipelex/sdk`) |
+| [`pipelex-sdk/python`](https://github.com/Pipelex/pipelex-sdk/tree/main/python) | Python SDK for the Pipelex API (PyPI: `pipelex-sdk`) |
 | [`pipelex-starter-js`](https://github.com/Pipelex/pipelex-starter-js) | Starter template: a Next.js app that runs methods through `@pipelex/sdk`, with worked examples to copy |
 | [`pipelex-starter-python`](https://github.com/Pipelex/pipelex-starter-python) | Starter template: a Python CLI that runs methods through `pipelex-sdk` |
 | [`n8n-nodes-pipelex`](https://github.com/Pipelex/n8n-nodes-pipelex) | n8n community node that runs methods on a Pipelex API server (npm: `n8n-nodes-pipelex`) |
