@@ -16,6 +16,8 @@ permissions:
 
 jobs:
   CLAAssistant:
+    # The file also triggers in this repository, which holds it and asks no CLA of its own.
+    if: github.repository != 'Pipelex/.github'
     runs-on: ubuntu-latest
     steps:
       # The App's token is used for one thing, writing signatures into cla-signatures, the only
