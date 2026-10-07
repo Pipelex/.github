@@ -6,6 +6,6 @@ This repository is the Pipelex organisation's shared public face. It holds three
 
 `onboarding/` carries the published onboarding text every public Pipelex surface takes its words from: what Pipelex is, how to sign up, which command to run first. A README quick start, a documentation page, a marketplace description and a repository About all read it from here rather than each writing their own, which is why it is published by a repository that belongs to no single product. The files are generated and are not edited here — [`onboarding/README.md`](onboarding/README.md) says how a surface carries one and where to report something wrong with it.
 
-`actions/` holds the composite actions Pipelex repositories run rather than each keeping a copy of the same steps, such as the CLA Assistant; [`docs/shared-actions.md`](docs/shared-actions.md) describes each one and the workflow a repository runs it from.
+`.github/workflows/cla.yml` is the CLA Assistant every Pipelex repository that asks for a contributor licence agreement runs, required on them by an organization ruleset rather than copied into each; [`docs/cla.md`](docs/cla.md) describes it.
 
 Pull requests here target `dev`, as everywhere in the organisation; `dev` is then promoted to `main`, which is what the organisation serves and what a consumer's drift check fetches by raw URL.
