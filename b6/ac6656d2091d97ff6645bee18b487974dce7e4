@@ -1,0 +1,23 @@
+.github/workflows/cla.yml
+  s_26d4068d7c7d12::t_4fb4cc2a47da22 1-44
+docs/cla.md
+  s_26d4068d7c7d12::t_4fb4cc2a47da22 1-9
+README.md
+  s_26d4068d7c7d12::t_4fb4cc2a47da22 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6ac6656d2091d97ff6645bee18b487974dce7e4",
+  "prompts": {},
+  "sessions": {
+    "s_26d4068d7c7d12": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "273ce13b-3e96-4c0f-812d-f7e7a835795f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "thomashebrard <thomas@pipelex.com>"
+    }
+  }
+}
