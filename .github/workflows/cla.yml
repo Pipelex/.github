@@ -1,7 +1,7 @@
 # The CLA Assistant, run on the pull requests of every Pipelex repository that asks contributors to
 # sign a CLA. No repository carries a copy: the organization ruleset `cla`, declared in
 # github-manager's `config/organization.yaml`, requires this workflow on the repositories it lists,
-# and GitHub runs it from here in the context of each of them, with that repository's secrets.
+# and GitHub runs it from here in the context of each of them, with that repository's secrets. The agreement a contributor signs is `CLA.md` here, the same for every repository.
 # `docs/cla.md` describes the whole arrangement.
 name: CLA Assistant
 
@@ -36,7 +36,7 @@ jobs:
           PERSONAL_ACCESS_TOKEN: ${{ steps.app-token.outputs.token }}
         with:
           path-to-signatures: signatures/version1/cla.json
-          path-to-document: https://github.com/${{ github.repository }}/blob/main/CLA.md
+          path-to-document: https://github.com/Pipelex/.github/blob/main/CLA.md
           branch: main
           allowlist: ${{ vars.CLA_ALLOWLIST }}
           remote-organization-name: ${{ github.repository_owner }}
