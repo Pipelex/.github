@@ -1,0 +1,44 @@
+# The CLA Assistant, run on the pull requests of every Pipelex repository that asks contributors to
+# sign a CLA. No repository carries a copy: the organization ruleset `cla`, declared in
+# github-manager's `config/organization.yaml`, requires this workflow on the repositories it lists,
+# and GitHub runs it from here in the context of each of them, with that repository's secrets. The agreement a contributor signs is `CLA.md` here, the same for every repository.
+# `docs/cla.md` describes the whole arrangement.
+name: CLA Assistant
+
+on:
+  pull_request_target:
+
+permissions:
+  actions: write
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  CLAAssistant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.CLA_GH_APP_ID }}
+          private-key: ${{ secrets.CLA_GH_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            cla-signatures
+            ${{ github.event.repository.name }}
+
+      - name: CLA Assistant
+        uses: contributor-assistant/github-action@v2.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ steps.app-token.outputs.token }}
+        with:
+          path-to-signatures: signatures/version1/cla.json
+          path-to-document: https://github.com/Pipelex/.github/blob/main/CLA.md
+          branch: main
+          allowlist: ${{ vars.CLA_ALLOWLIST }}
+          remote-organization-name: ${{ github.repository_owner }}
+          remote-repository-name: cla-signatures
+          signed-commit-message: $contributorName has signed the CLA in $owner/$repo#$pullRequestNo
