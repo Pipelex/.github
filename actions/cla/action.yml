@@ -1,0 +1,55 @@
+# The CLA Assistant, shared by every Pipelex repository that asks contributors to sign a CLA.
+#
+# A repository runs it from the same short workflow, the one in docs/shared-actions.md, which passes
+# in the secrets and the allowlist because an action cannot read them itself. Everything that differs
+# between repositories is read from the calling repository: its name, its organisation, and its own
+# CLA.md on `main`. Signatures are kept in `<organisation>/cla-signatures`, so a contributor who
+# signs once is signed for every repository.
+name: CLA Assistant
+description: Ask a pull request's contributors to sign the repository's CLA, and record their signatures in cla-signatures.
+
+inputs:
+  app-id:
+    description: The ID of the GitHub App that writes to cla-signatures (the CLA_GH_APP_ID secret).
+    required: true
+  private-key:
+    description: That GitHub App's private key (the CLA_GH_APP_PRIVATE_KEY secret).
+    required: true
+  allowlist:
+    description: Comma-separated logins that never need to sign (the CLA_ALLOWLIST variable).
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Get GitHub App token
+      id: app-token
+      # Only a pull request event, or a comment on a pull request that signs or asks for a recheck.
+      if: >-
+        github.event_name == 'pull_request_target' ||
+        (github.event.issue.pull_request &&
+          (github.event.comment.body == 'recheck' ||
+           github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA'))
+      uses: actions/create-github-app-token@v3
+      with:
+        app-id: ${{ inputs.app-id }}
+        private-key: ${{ inputs.private-key }}
+        owner: ${{ github.repository_owner }}
+        repositories: |
+          cla-signatures
+          ${{ github.event.repository.name }}
+
+    - name: CLA Assistant
+      if: steps.app-token.outcome == 'success'
+      uses: contributor-assistant/github-action@v2.6.1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        PERSONAL_ACCESS_TOKEN: ${{ steps.app-token.outputs.token }}
+      with:
+        path-to-signatures: signatures/version1/cla.json
+        path-to-document: https://github.com/${{ github.repository }}/blob/main/CLA.md
+        branch: main
+        allowlist: ${{ inputs.allowlist }}
+        remote-organization-name: ${{ github.repository_owner }}
+        remote-repository-name: cla-signatures
+        signed-commit-message: $contributorName has signed the CLA in $owner/$repo#$pullRequestNo
