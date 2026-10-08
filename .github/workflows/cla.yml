@@ -71,3 +71,13 @@ jobs:
           remote-organization-name: ${{ github.repository_owner }}
           remote-repository-name: cla-signatures
           signed-commit-message: $contributorName has signed the CLA in $owner/$repo#$pullRequestNo
+          # The bot's request to sign. A ruleset never runs this workflow on a comment, so the
+          # request says when a signature counts rather than offering `recheck`, which nothing hears.
+          suggest-recheck: false
+          custom-notsigned-prcomment: >-
+            <br/>Thank you for your submission, we really appreciate it. Like many open-source
+            projects, we ask that $you sign our [Contributor License
+            Agreement](https://github.com/Pipelex/.github/blob/main/CLA.md) before we can accept
+            your contribution. You can sign the CLA by posting a pull request comment in the format
+            below. The check reads signatures when it runs, so once you have commented, push a new
+            commit to this pull request or ask a maintainer to re-run the CLAAssistant check.<br/>
