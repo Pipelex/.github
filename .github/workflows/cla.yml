@@ -9,7 +9,6 @@ on:
   pull_request_target:
 
 permissions:
-  actions: write
   contents: read
   pull-requests: write
   statuses: write
@@ -24,15 +23,43 @@ jobs:
       # repository its installation reaches; the comments and the check use the workflow's token.
       - name: Get GitHub App token
         id: app-token
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           app-id: ${{ secrets.CLA_GH_APP_ID }}
           private-key: ${{ secrets.CLA_GH_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: cla-signatures
 
+      # contributor-assistant/github-action v2.6.1, at the commit its tag names, with a one-line
+      # patch. The upstream repository is archived. Once every contributor has signed, the action
+      # looks its own workflow up by name in the pull request's repository, to re-run an earlier
+      # failed check, and throws when the workflow is not there. A workflow run by a ruleset never
+      # is. The re-run exists for a signature given in a comment, and a ruleset never runs this
+      # workflow on a comment, so the patch skips the re-run on pull_request_target, as the action
+      # already does on pull_request. `docs/cla.md` explains the patch. This job never checks out
+      # the pull request's own code.
+      - name: Fetch the CLA Assistant action
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          repository: contributor-assistant/github-action
+          ref: ca4a40a7d1004f18d9960b404b97e5f30a505a08
+          path: .cla-assistant
+          persist-credentials: false
+
+      - name: Skip the action's re-run of its own workflow
+        run: |
+          file=.cla-assistant/dist/index.js
+          old="if (github_1.context.eventName === 'pull_request') {"
+          new="if (github_1.context.eventName === 'pull_request' || github_1.context.eventName === 'pull_request_target') {"
+          if [ "$(grep -cF -- "$old" "$file")" != 1 ]; then
+            echo "::error::The re-run guard is not where v2.6.1 has it, so the action would run unpatched."
+            exit 1
+          fi
+          OLD="$old" NEW="$new" perl -pi -e 's/\Q$ENV{OLD}\E/$ENV{NEW}/' "$file"
+          test "$(grep -cF -- "$new" "$file")" = 1
+
       - name: CLA Assistant
-        uses: contributor-assistant/github-action@v2.6.1
+        uses: ./.cla-assistant
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERSONAL_ACCESS_TOKEN: ${{ steps.app-token.outputs.token }}
