@@ -17,7 +17,8 @@ jobs:
   CLAAssistant:
     # The file also triggers in this repository, which holds it and asks no CLA of its own.
     if: github.repository != 'Pipelex/.github'
-    runs-on: ubuntu-latest
+    # A pinned image, so a move of `ubuntu-latest` never changes the runner under the CLA check.
+    runs-on: ubuntu-24.04
     steps:
       # The App's token is used for one thing, writing signatures into cla-signatures, the only
       # repository its installation reaches; the comments and the check use the workflow's token.
@@ -25,7 +26,9 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
-          app-id: ${{ secrets.CLA_GH_APP_ID }}
+          # The client id of the App `pipelex-cla-signatures-read-access`, which is public
+          # (`gh api apps/pipelex-cla-signatures-read-access`); only its private key is a secret.
+          client-id: Iv23li4tzbte0fxKqXH1
           private-key: ${{ secrets.CLA_GH_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: cla-signatures
@@ -57,6 +60,18 @@ jobs:
           fi
           OLD="$old" NEW="$new" perl -pi -e 's/\Q$ENV{OLD}\E/$ENV{NEW}/' "$file"
           test "$(grep -cF -- "$new" "$file")" = 1
+
+      # v2.6.1 declares Node.js 20, which GitHub deprecated and already runs on Node.js 24, so
+      # the action is declared for the runtime it runs on.
+      - name: Declare the action for Node.js 24
+        run: |
+          file=.cla-assistant/action.yml
+          if [ "$(grep -cF -- 'using: "node20"' "$file")" != 1 ]; then
+            echo "::error::The runtime is not declared where v2.6.1 declares it."
+            exit 1
+          fi
+          sed -i 's/using: "node20"/using: "node24"/' "$file"
+          test "$(grep -cF -- 'using: "node24"' "$file")" = 1
 
       - name: CLA Assistant
         uses: ./.cla-assistant
