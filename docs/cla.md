@@ -6,7 +6,7 @@ Every public Pipelex repository that asks contributors to sign a contributor lic
 
 GitHub runs the workflow as it is on this repository's `main`, in the context of the pull request's repository: the secrets it reads are the ones granted to that repository, the allowlist is the organization variable `CLA_ALLOWLIST`, and the document it asks a contributor to sign is [`CLA.md`](../CLA.md) at the root of this repository, one agreement for every Pipelex project. A repository may still carry its own copy for its readers, but the bot links this one. Signatures are recorded in `Pipelex/cla-signatures`, so a contributor who signs once is signed for every repository. A change to the workflow therefore reaches every repository when `dev` is promoted to `main` here.
 
-**A signature takes effect at the next run.** A workflow required by a ruleset runs only on pull request events, never on a comment, so after a contributor comments the signing sentence, the check passes once the contributor pushes again or a maintainer re-runs the failed `CLAAssistant` job; that run reads the comment and records the signature.
+**A signature takes effect at the next run.** A workflow required by a ruleset runs only on pull request events, never on a comment, so after a contributor comments the signing sentence, the check passes once the contributor pushes again or a maintainer re-runs the failed `CLAAssistant` job; that run reads the comment and records the signature. The bot's request to sign says so, and it does not offer the action's `recheck` comment (`suggest-recheck: false`), which nothing would hear.
 
 ## The patched action
 
