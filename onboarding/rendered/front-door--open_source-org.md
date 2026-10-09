@@ -58,4 +58,4 @@ Give the file as a URL the Pipelex MCP can reach. In ChatGPT you can attach it t
 
 **Next:** [what Pipelex is](https://go.pipelex.com/product) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)
 
-Prefer to run it yourself? The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs your methods on your own machine — it and the rest of our repositories are listed below.
+Prefer to run it yourself? The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs your methods from your terminal, either on the hosted Pipelex API once `pipelex login` has saved your key, or on your own machine against the model providers you choose. It and the rest of our repositories are listed below.
