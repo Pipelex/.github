@@ -77,7 +77,7 @@ Give the file as a URL the Pipelex MCP can reach. In ChatGPT you can attach it t
 
 **Next:** [what Pipelex is](https://go.pipelex.com/product) · [documentation](https://go.pipelex.com/docs) · [your console](https://app.pipelex.com) · [Discord](https://go.pipelex.com/discord)
 
-Prefer to run it yourself? The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs your methods on your own machine — it and the rest of our repositories are listed below.
+Prefer to run it yourself? The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs your methods from your terminal, either on the hosted Pipelex API once `pipelex login` has saved your key, or on your own machine against the model providers you choose. It and the rest of our repositories are listed below.
 <!-- /onboarding -->
 
 ## What a method looks like
@@ -100,7 +100,7 @@ From here, Pipelex handles model routing across providers, structured output par
 
 ## Run it yourself
 
-The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs methods on your own machine, against the model providers you choose or a local model; its README carries the install, the configuration and the first run. [`pipelex-api`](https://github.com/Pipelex/pipelex-api) is the runner API you host yourself, and the editor extension highlights and checks `.mthds` files, from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=pipelex.pipelex) or the [Open VSX Registry](https://open-vsx.org/extension/Pipelex/pipelex) for Cursor, Windsurf and other VS Code forks.
+The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs methods from your terminal, either on the hosted Pipelex API once `pipelex login` has saved your key, or on your own machine against the model providers you choose or a local model; its README carries the install, the configuration and the first run. [`pipelex-api`](https://github.com/Pipelex/pipelex/tree/main/api), in the runtime's repository, is the runner API you host yourself, and the editor extension highlights and checks `.mthds` files, from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=pipelex.pipelex) or the [Open VSX Registry](https://open-vsx.org/extension/Pipelex/pipelex) for Cursor, Windsurf and other VS Code forks.
 
 ## Repositories
 
@@ -121,8 +121,8 @@ The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs methods on your o
 
 | Repository | Description |
 |:-----------|:------------|
-| [`pipelex`](https://github.com/Pipelex/pipelex) | The Pipelex runtime, which runs methods on your own machine (PyPI: `pipelex`) |
-| [`pipelex-api`](https://github.com/Pipelex/pipelex-api) | The runner API you host yourself, the reference implementation of the MTHDS Protocol (Docker Hub: `pipelex/pipelex-api`) |
+| [`pipelex`](https://github.com/Pipelex/pipelex) | The Pipelex runtime, which runs methods from your terminal, on the hosted Pipelex API or on your own machine (PyPI: `pipelex`) |
+| [`pipelex/api`](https://github.com/Pipelex/pipelex/tree/main/api) | The runner API you host yourself, the reference implementation of the MTHDS Protocol, released with the runtime (PyPI: `pipelex-api`, Docker Hub: `pipelex/pipelex-api`) |
 | [`vscode-pipelex`](https://github.com/Pipelex/vscode-pipelex) | The VS Code and Cursor extension, the `plxt` formatter and linter, and the language server for `.mthds` (PyPI: `pipelex-tools`) |
 
 **Methods and examples**
@@ -159,7 +159,7 @@ The [Pipelex runtime](https://github.com/Pipelex/pipelex) runs methods on your o
 
 ## License
 
-The runtime and the servers that run methods — [`pipelex`](https://github.com/Pipelex/pipelex), [`pipelex-api`](https://github.com/Pipelex/pipelex-api) and [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) — are source-available under the **Elastic License 2.0** (ELv2). You may embed them in your own products, including services whose features run your methods, and run them for your own team or company; what the license rules out is hosting a service that runs methods for others. The [license page](https://docs.pipelex.com/latest/license/) explains how we read it, with concrete examples. Every version of them released before the switch stays under MIT.
+The runtime and the servers that run methods — [`pipelex`](https://github.com/Pipelex/pipelex), [`pipelex-api`](https://github.com/Pipelex/pipelex/tree/main/api) and [`pipelex-mcp`](https://github.com/Pipelex/pipelex-mcp) — are source-available under the **Elastic License 2.0** (ELv2). You may embed them in your own products, including services whose features run your methods, and run them for your own team or company; what the license rules out is hosting a service that runs methods for others. The [license page](https://docs.pipelex.com/latest/license/) explains how we read it, with concrete examples. Every version of them released before the switch stays under MIT.
 
 The SDKs, the starter templates, the public method library, the cookbook, the UI libraries, the VS Code extension, the n8n node, `cocode` and the [MTHDS open standard](https://github.com/mthds-ai/mthds) are **MIT licensed**. [`kajson`](https://github.com/Pipelex/kajson) and [`pipelex-plugins`](https://github.com/Pipelex/pipelex-plugins) are licensed under **Apache 2.0**. Each repository's `LICENSE` file carries its terms.
 
